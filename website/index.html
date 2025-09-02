@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>EduATlab — Play2Learn | Scratch Hackathons & Lernspiele</title>
+<meta name="description" content="EduATlab entwickelt mit Kindern Lernspiele für Play2Learn (Launch 1. Januar 2026). Scratch Hackathons, Workshops & Partnerprogramme.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#0b9ea8;
+    --accent-2:#ffb84d;
+    --glass: rgba(11,158,168,0.06);
+    --radius:14px;
+    --max-width:1200px;
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    color:#0f1724;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#f7fbfe 0%, #eef6fb 100%);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max-width);margin:28px auto;padding:28px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:16px}
+  .logo{
+    width:96px;height:96px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eaf8f8,#eaf2ff);box-shadow:0 10px 30px rgba(15,23,36,0.06);border:1px solid rgba(15,23,36,0.04);
+  }
+  .logo img{width:86px;height:86px;object-fit:contain;display:block}
+  h1{font-size:20px;margin:0}
+  .tag{color:var(--muted);font-size:13px;margin-top:4px}
+  nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-weight:600}
+  nav a:hover{color:var(--accent)}
+  .hero{
+    display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:center;
+  }
+  .card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow: 0 12px 30px rgba(15,23,36,0.06);border:1px solid rgba(15,23,36,0.03)}
+  .hero .intro h2{margin:0 0 8px 0;color:#061b20;font-size:28px}
+  .muted{color:var(--muted);font-size:15px;line-height:1.5}
+  .cta-row{display:flex;gap:12px;margin-top:16px}
+  .btn{
+    padding:10px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),#00c6d0);color:white;box-shadow:0 8px 20px rgba(11,158,168,0.12)
+  }
+  .btn.ghost{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--muted);font-weight:600}
+  .hero-img .frame{width:100%;height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(15,23,36,0.04);display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ffffff,#eef9fb)}
+  .hero-img img{max-width:100%;max-height:100%;object-fit:contain}
+
+  /* Grid features */
+  .two-col{display:grid;grid-template-columns:1fr 420px;gap:24px;margin-top:22px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+  .feature h4{margin:0;color:var(--accent);font-size:16px}
+  .feature p{margin:6px 0 0 0;color:var(--muted);font-size:14px}
+
+  /* Play2Learn details */
+  .play2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--accent);font-weight:700;font-size:13px;margin-right:8px}
+
+  /* tasks */
+  .tasks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+  .task{background:linear-gradient(180deg,#fff,#fafdfd);padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03)}
+  .task .ttl{font-weight:700;color:#0b1b1d}
+
+  /* events */
+  .events .evt{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03);background:#fff;margin-bottom:10px}
+  .evt .date{min-width:110px;padding:8px;border-radius:8px;background:linear-gradient(180deg,#f0fcfb,#eaf8f8);text-align:center;border:1px solid rgba(11,158,168,0.08);font-weight:700;color:var(--accent)}
+
+  /* footer & legal */
+  footer{margin-top:30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .legal{color:var(--muted);font-size:13px}
+  .impressum{margin-top:18px;background:linear-gradient(180deg,#fff,#fbfdff);padding:16px;border-radius:10px;border:1px solid rgba(15,23,36,0.03);font-size:14px;color:#0b1b1d}
+
+  /* responsive */
+  @media (max-width:1000px){
+    .hero,.two-col{grid-template-columns:1fr}
+    .play2{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr}
+    .tasks{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- eduatlab.png bleibt an dieser Stelle -->
+          <img src="eduatlab.png" alt="EduATlab Logo" id="logoImg">
+        </div>
+        <div>
+          <h1>EduATlab</h1>
+          <div class="tag">Wir entwickeln Lernspiele für Play2Learn · Scratch Hackathons für 7–14-Jährige</div>
+        </div>
+      </div>
+
+      <nav aria-label="Hauptnavigation">
+        <a href="#play2learn">Play2Learn</a>
+        <a href="#hackathons">Hackathons</a>
+        <a href="#features">Features</a>
+        <a href="#events">Termine</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card intro">
+        <h2>Play2Learn startet am <strong>1. Januar 2026</strong></h2>
+        <p class="muted">Play2Learn ist eine kinderfreundliche Plattform für Lernspiele — kuratiert, sicher und gestaltet von jungen Entwickler:innen. EduATlab arbeitet mit Schüler:innen in Scratch Hackathons zusammen, damit täglich neue, hochwertige Mini-Games entstehen.</p>
+
+        <div class="play2">
+          <div>
+            <div class="pill">Release: 01.01.2026</div>
+            <div style="margin-top:12px;font-weight:700;font-size:18px;color:#062426" id="countdown">Countdown: —</div>
+            <div class="muted" style="margin-top:8px">Verfolge den Fortschritt unserer Spiele-Bibliothek — wir fügen regelmäßig neue Spiele hinzu.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:10px">
+            <a class="btn" href="#hackathons">Mehr über Hackathons</a>
+            <a class="btn ghost" href="#features">Was Play2Learn kann →</a>
+          </div>
+        </div>
+
+        <div style="margin-top:18px" class="muted">
+          <strong>Kurz:</strong> Wir betreiben Hackathons, bei denen Kinder Spiele bauen — diese Spiele landen geprüft & sicher auf Play2Learn zum Spielen, Lernen und Teilen.
+        </div>
+      </div>
+
+      <aside class="card hero-img" aria-label="Bildbereich EduATlab">
+        <div class="frame">
+          <!-- bleibt eduatlab.png -->
+          <img src="eduatlab.png" alt="EduATlab – Team / Logo (Platzhalter)">
+        </div>
+        <div style="margin-top:12px" class="muted">Platz für Eventfotos & Play2Learn-Vorschauen</div>
+      </aside>
+    </section>
+
+    <!-- Play2Learn Details -->
+    <section id="play2learn" class="card">
+      <h3 style="margin:0;color:#062426">Was ist Play2Learn?</h3>
+      <p class="muted" style="margin-top:8px">Play2Learn ist eine sichere, pädagogisch orientierte Spieleplattform für Kinder. Start: <strong>1. Januar 2026</strong>. Ziel: hochwertige, kreative Lernspiele, gestaltet von Kindern und geprüft durch Mentor:innen.</p>
+
+      <div class="grid-3">
+        <div class="feature">
+          <h4>Kuratiertes Spiele-Archiv</h4>
+          <p>Alle Spiele werden vor Veröffentlichung geprüft: Qualität, Lernziel, Sicherheit.</p>
+        </div>
+        <div class="feature">
+          <h4>Lehrpfade & Lernziele</h4>
+          <p>Spiele lassen sich nach Lernzielen filtern (Mathe, Sprache, Umwelt, Geschichte etc.). Lehrpfade verbinden mehrere Spiele zu einem Thema.</p>
+        </div>
+        <div class="feature">
+          <h4>Lehrer-Dashboard</h4>
+          <p>Lehrkräfte können Inhalte empfehlen, Klassen anlegen und Lernfortschritte einsehen.</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="feature">
+          <h4>Elternbereich & Controls</h4>
+          <p>Einfach zu nutzende Einstellungen für Spielzeit, Altersstufen und Datenschutz.</p>
+        </div>
+        <div class="feature">
+          <h4>Community-Galerie</h4>
+          <p>Ausgewählte Projekte werden in einer Galerie gezeigt — mit Kurzporträts der jungen Entwickler:innen.</p>
+        </div>
+        <div class="feature">
+          <h4>Barrierefreiheit & Lokalisierung</h4>
+          <p>Unterstützung mehrerer Sprachen, einfache Bedienoberflächen und Zugänglichkeits-Optionen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hackathons -->
+    <section id="hackathons" class="card" style="margin-top:18px">
+      <h3 style="margin:0;color:#062426">Scratch Hackathons — wie Spiele für Play2Learn entstehen</h3>
+      <p class="muted" style="margin-top:8px">Bei unseren Hackathons treffen sich Teams (7–14 Jahre) — mit Mentor:innen — um innerhalb weniger Tage Mini-Games in Scratch zu entwickeln. Die besten, pädagogisch wertvollen Spiele werden für Play2Learn vorbereitet.</p>
+
+      <div class="two-col" style="margin-top:12px">
+        <div>
+          <h4 style="margin-bottom:8px;color:#062426">Ablauf eines Hackathons (Kurzversion)</h4>
+          <div class="tasks">
+            <div class="task"><div class="ttl">1. Idee sammeln</div><div class="muted">Teamidee wählen & Lernziel festlegen.</div></div>
+            <div class="task"><div class="ttl">2. Prototyp bauen</div><div class="muted">Sprites, Logik und Zielstruktur entwerfen.</div></div>
+            <div class="task"><div class="ttl">3. Testen & Feedback</div><div class="muted">Spiel testen, Bugs finden, verbessern.</div></div>
+            <div class="task"><div class="ttl">4. Einreichen</div><div class="muted">Fertiges Spiel zur Prüfung an EduATlab senden.</div></div>
+          </div>
+          <p class="muted" style="margin-top:10px">Extra: Mini-Missionen, Badges & eine Abschluss-Präsentation vor Eltern und Gästen.</p>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:8px;color:#062426">Was wir Kindern beibringen</h4>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Logisches Denken & Problemlösung</li>
+            <li>Teamwork & Präsentationsfähigkeit</li>
+            <li>Grundlagen der Medienkompetenz (Lizenzen, Quellen, Datenschutz)</li>
+            <li>Kreatives Design & Storytelling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features / Play2Learn possibilities -->
+    <section id="features" class="card" style="margin-top:18px">
+      <h3 style="margin:0;color:#062426">Play2Learn — Features (Beispiele)</h3>
+      <div style="margin-top:12px" class="muted">Wir bauen viele Tools rund ums Spielen & Lernen — hier ein Auszug möglicher Funktionen:</div>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="feature"><h4>Lehrerhandreichungen</h4><p class="muted">Fertige Arbeitsblätter & Unterrichtsvorschläge zu Spielen.</p></div>
+        <div class="feature"><h4>Achievement-System</h4><p class="muted">Badges, Fortschrittssiegel & spielerische Leistungsnachweise.</p></div>
+        <div class="feature"><h4>Curriculum-Tags</h4><p class="muted">Spiele sind nach Schulcurricula durchsuchbar.</p></div>
+      </div>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="feature"><h4>Sicherheitsfilter</h4><p class="muted">Automatisierte Prüfungen + menschliche Moderation.</p></div>
+        <div class="feature"><h4>Familien-Account</h4><p class="muted">Übersicht über Spielzeit & Lernfortschritt.</p></div>
+        <div class="feature"><h4>Wettbewerbe & Challenges</h4><p class="muted">Regelmäßig Themen-Challenges mit Preisen.</p></div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" class="card" style="margin-top:18px">
+      <h3 style="margin:0;color:#062426">Kommende Hackathons & Termine</h3>
+      <div style="margin-top:12px" class="events">
+        <!-- Du kannst hier echte Termine ergänzen -->
+        <div class="evt">
+          <div class="date">01.–03.09.2025</div>
+          <div>
+            <strong>Kickstart: Scratch Hackathon (3 Tage)</strong>
+            <div class="muted">Intensiv-Event: Ideen → Prototyp → Finale. Zielgruppe: 7–14 Jahre.</div>
+          </div>
+        </div>
+
+        <div class="evt">
+          <div class="date">15.11.2025</div>
+          <div>
+            <strong>Mini-Jam: Winter-Challenge</strong>
+            <div class="muted">1-Tages-Event mit Thema "Umwelt & Klima".</div>
+          </div>
+        </div>
+
+        <div class="evt">
+          <div class="date">28.12.2025</div>
+          <div>
+            <strong>Pre-Launch: Play2Learn Showcase</strong>
+            <div class="muted">Ausgewählte Spiele werden vorab gezeigt — Einladung für Familien.</div>
+          </div>
+        </div>
+
+      </div>
+      <p class="muted" style="margin-top:12px">Du willst ein Event organisieren oder Schüler:innen anmelden? → Kontaktformular weiter unten.</p>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="card" style="margin-top:18px">
+      <h3 style="margin:0;color:#062426">Kontakt & Medienanfragen</h3>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+        <div>
+          <p class="muted">Für Anmeldungen, Kooperationen oder Presse: kontakt@eduatlab.de</p>
+          <form action="mailto:kontakt@eduatlab.de" method="post" enctype="text/plain" style="display:flex;flex-direction:column;gap:8px">
+            <input name="Name" placeholder="Name" required style="padding:10px;border-radius:8px;border:1px solid rgba(15,23,36,0.06);">
+            <input type="email" name="E-Mail" placeholder="E-Mail" required style="padding:10px;border-radius:8px;border:1px solid rgba(15,23,36,0.06);">
+            <textarea name="Nachricht" placeholder="Kurz: Worum geht's?" rows="4" style="padding:10px;border-radius:8px;border:1px solid rgba(15,23,36,0.06);"></textarea>
+            <div style="display:flex;gap:8px">
+              <button class="btn" type="submit">Nachricht senden</button>
+              <a class="btn ghost" href="mailto:kontakt@eduatlab.de">Direkt mailen</a>
+            </div>
+          </form>
+        </div>
+
+        <aside style="display:flex;flex-direction:column;gap:8px">
+          <div class="card" style="padding:14px">
+            <strong>EduATlab GmbH</strong><div class="muted" style="margin-top:6px">Berliner Straße 54, 52342 Freißen</div>
+            <div class="muted" style="margin-top:8px"><strong>Telefon:</strong> +49 123 456789<br><strong>E-Mail:</strong> kontakt@eduatlab.de</div>
+            <div class="muted" style="margin-top:8px"><strong>Veranstaltungsleitung:</strong> Amr Taleb</div>
+          </div>
+
+          <div style="font-size:13px;color:var(--muted)">Hinweis: Wenn du Kinder anmeldest, gib bitte beim Betreff Alter & Schule an.</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Impressum -->
+    <section id="impressum" class="impressum">
+      <h4 style="margin:0 0 8px 0">Impressum & Rechtliche Hinweise</h4>
+      <div style="display:grid;grid-template-columns:1fr 240px;gap:12px">
+        <div>
+          <strong>EduATlab GmbH</strong><br>
+          Berliner Straße 54, 52342 Freißen<br>
+          Vertreten durch: Elias Schröder<br>
+          Handelsregister: HRB 54673 (Amtsgericht Freißen)<br>
+          Umsatzsteuer-ID: DE4443286024
+        </div>
+        <div class="muted">
+          <strong>Datenschutz</strong><br>
+          Kontaktformulare senden E-Mails. Für öffentliche Nutzung empfehlen wir später DSGVO-konforme Formulare/Backend.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="legal">© EduATlab — Play2Learn | Release: 01.01.2026</div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a class="muted" href="#impressum">Impressum</a>
+        <a class="muted" href="#kontakt">Kontakt</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Countdown bis 1. Januar 2026 00:00 UTC+1 (Europe/Berlin)
+    (function(){
+      const target = new Date(Date.UTC(2026,0,1,0,0,0)); // 2026-01-01T00:00:00Z -> adjust for user's timezone
+      const el = document.getElementById('countdown');
+      function update(){
+        const now = new Date();
+        // convert both to ms and compute diff (target in UTC)
+        let diff = target - now;
+        if(diff <= 0){ el.textContent = 'Play2Learn ist gestartet!'; return; }
+        const days = Math.floor(diff / (1000*60*60*24));
+        diff -= days * (1000*60*60*24);
+        const hours = Math.floor(diff / (1000*60*60));
+        diff -= hours * (1000*60*60);
+        const mins = Math.floor(diff / (1000*60));
+        const secs = Math.floor((diff / 1000) % 60);
+        el.textContent = `${days} Tage · ${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+      }
+      update(); setInterval(update,1000);
+    })();
+
+    // fallback wenn bild fehlt
+    (function(){
+      const img = document.getElementById('logoImg');
+      img.onerror = () => {
+        img.style.display = 'none';
+      };
+    })();
+  </script>
+</body>
+</html>
